@@ -29,6 +29,107 @@ Ready-paste config for Claude Code or Cursor, saved as `.mcp.json` in your proje
 
 Then ask your agent: *"What technologies does example.com run?"*
 
+### Install in your client
+
+Requirements:
+
+- Docker
+- Claude Desktop, Claude Code, Cursor, VS Code, Windsurf, or any other MCP client
+- No API keys
+
+**Standard config** works in most MCP clients:
+
+```json
+{
+  "mcpServers": {
+    "whatweb": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "--memory=512m",
+        "--cpus=0.5",
+        "--pids-limit=100",
+        "devkind/whatweb-mcp:latest"
+      ]
+    }
+  }
+}
+```
+
+<details>
+<summary>Claude Desktop</summary>
+
+Follow the MCP install [guide](https://modelcontextprotocol.io/quickstart/user) and add the standard config above to your `claude_desktop_config.json`.
+
+</details>
+
+<details>
+<summary>Claude Code</summary>
+
+Run:
+
+```bash
+claude mcp add whatweb -- docker run -i --rm --memory=512m --cpus=0.5 --pids-limit=100 devkind/whatweb-mcp:latest
+```
+
+Or add the standard config above to `.mcp.json` in your project root.
+
+</details>
+
+<details>
+<summary>Cursor</summary>
+
+#### Click the button to install:
+
+[<img src="https://cursor.com/deeplink/mcp-install-dark.svg" alt="Install in Cursor">](https://cursor.com/en/install-mcp?name=WhatWeb%20MCP&config=eyJjb21tYW5kIjoiZG9ja2VyIiwiYXJncyI6WyJydW4iLCItaSIsIi0tcm0iLCItLW1lbW9yeT01MTJtIiwiLS1jcHVzPTAuNSIsIi0tcGlkcy1saW1pdD0xMDAiLCJkZXZraW5kL3doYXR3ZWItbWNwOmxhdGVzdCJdfQ%3D%3D)
+
+#### Or install manually:
+
+Go to `Cursor Settings` -> `MCP` -> `Add new MCP Server`. Name it "WhatWeb MCP", use `command` type with the command `docker run -i --rm --memory=512m --cpus=0.5 --pids-limit=100 devkind/whatweb-mcp:latest`.
+
+</details>
+
+<details>
+<summary>VS Code</summary>
+
+Follow the MCP install [guide](https://code.visualstudio.com/docs/copilot/chat/mcp-servers#_add-an-mcp-server) and use the standard config above. You can also install with the VS Code CLI:
+
+```bash
+code --add-mcp '{"name":"whatweb","command":"docker","args":["run","-i","--rm","--memory=512m","--cpus=0.5","--pids-limit=100","devkind/whatweb-mcp:latest"]}'
+```
+
+</details>
+
+<details>
+<summary>Windsurf</summary>
+
+Follow the Windsurf MCP [documentation](https://docs.windsurf.com/windsurf/cascade/mcp) and use the standard config above.
+
+</details>
+
+<details>
+<summary>Goose</summary>
+
+Go to `Advanced settings` -> `Extensions` -> `Add custom extension`. Name it "WhatWeb MCP", use type `STDIO`, and set the `command` to `docker run -i --rm --memory=512m --cpus=0.5 --pids-limit=100 devkind/whatweb-mcp:latest`. Click "Add Extension".
+
+</details>
+
+<details>
+<summary>LM Studio</summary>
+
+Go to `Program` in the right sidebar -> `Install` -> `Edit mcp.json`. Use the standard config above.
+
+</details>
+
+<details>
+<summary>Warp</summary>
+
+Go to `Settings` -> `AI` -> `Manage MCP Servers` -> `+ Add` to [add an MCP Server](https://docs.warp.dev/knowledge-and-collaboration/mcp#adding-an-mcp-server). Use the standard config above, or use the slash command `/add-mcp` in the Warp prompt and paste it.
+
+</details>
+
 ## Example tool call and output
 
 ```json
@@ -71,3 +172,7 @@ Built by [Devkind](https://devkind.com.au). Maintained by Kazim Ali.
 ## License
 
 [MIT](LICENSE). See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md). WhatWeb itself is licensed by its upstream authors. Scan only targets you are authorized to scan.
+
+## Qualifying leads by their tech stack?
+
+Once you know what a site runs, Devkind can help you build on it. We work with [Shopify](https://devkind.com.au/services/shopify), [Swell](https://devkind.com.au/services/swell) and [headless commerce](https://devkind.com.au/services/headless-ecommerce) stacks, and build custom MCP servers and AI agent workflows. [Talk to Devkind](https://devkind.com.au/services) or email [hello@devkind.com.au](mailto:hello@devkind.com.au).

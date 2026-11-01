@@ -1,0 +1,46 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.devkindhq/whatweb-mcp",
+  "title": "WhatWeb MCP",
+  "description": "Website technology fingerprinting for AI agents, powered by WhatWeb. Multi-arch Docker.",
+  "websiteUrl": "https://devkind.com.au/services",
+  "repository": {
+    "url": "https://github.com/devkindhq/whatweb-mcp",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "packages": [
+    {
+      "registryType": "oci",
+      "identifier": "docker.io/devkind/whatweb-mcp:1.0.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "WHATWEB_TIMEOUT",
+          "description": "Per-scan timeout in seconds (default 300)",
+          "isRequired": false,
+          "isSecret": false
+        },
+        {
+          "name": "WHATWEB_MAX_CONCURRENT",
+          "description": "Maximum concurrent scans (default 2)",
+          "isRequired": false,
+          "isSecret": false
+        }
+      ]
+    }
+  ],
+  "_meta": {
+    "io.modelcontextprotocol.registry/publisher-provided": {
+      "author": "Devkind",
+      "website": "https://devkind.com.au",
+      "tools": [
+        "whatweb_scan",
+        "get_scan_results",
+        "list_active_scans"
+      ]
+    }
+  }
+}

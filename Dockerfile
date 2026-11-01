@@ -1,5 +1,5 @@
 # WhatWeb MCP Server
-# Web technology fingerprinting — multi-arch (linux/amd64, linux/arm64)
+# Web technology fingerprinting, multi-arch (linux/amd64, linux/arm64)
 #
 # Build both platforms:
 #   docker buildx build --platform linux/amd64,linux/arm64 -t devkind/whatweb-mcp:latest .
@@ -7,8 +7,9 @@
 FROM ruby:3.2.8-alpine
 
 LABEL org.opencontainers.image.title="whatweb-mcp"
-LABEL org.opencontainers.image.description="MCP server for WhatWeb — web technology fingerprinting for AI agents"
+LABEL org.opencontainers.image.description="MCP server for WhatWeb: web technology fingerprinting for AI agents"
 LABEL org.opencontainers.image.source="https://github.com/devkindhq/whatweb-mcp"
+LABEL io.modelcontextprotocol.server.name="io.github.devkindhq/whatweb-mcp"
 LABEL org.opencontainers.image.licenses="MIT"
 
 RUN addgroup -g 1000 mcpuser && \
