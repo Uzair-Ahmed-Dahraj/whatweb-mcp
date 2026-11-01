@@ -158,6 +158,10 @@ Aggression levels map to WhatWeb's `-a` flag: `stealthy`/`passive` (1, one reque
 
 The container installs WhatWeb from the official upstream repository on an Alpine Ruby base, then runs a Python MCP server (`mcp` SDK, stdio transport). Each scan shells out with an argument array (no shell interpolation), writes WhatWeb's JSON log to an ephemeral `/app/output`, and parses it into typed results. Up to 100 scan results are kept in memory for follow-up questions in the same session. Tests cover target validation, JSON parsing, result-store bounds, and a live MCP stdio JSON-RPC handshake. Run them with `pytest`. Also installable from source without Docker: `pip install -r requirements.txt && python3 server.py` (requires WhatWeb on your PATH).
 
+## Claude Code skill
+
+This repo ships a ready-made agent skill at [`skills/tech-detector/SKILL.md`](skills/tech-detector/SKILL.md). It teaches Claude Code (or any skill-aware agent) when to scan a site, how to call `whatweb_scan`, and how to turn the raw technology list into a structured stack summary, business interpretation, and analysis angles — useful for lead qualification and competitor research. To install, copy the `skills/tech-detector/` directory into your project's `.claude/skills/` (or `~/.claude/skills/`) directory.
+
 ## Roadmap
 
 - [x] Official MCP Registry listing (`io.github.devkindhq/whatweb-mcp`)
