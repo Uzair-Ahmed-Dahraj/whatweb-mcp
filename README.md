@@ -160,7 +160,8 @@ The container installs WhatWeb from the official upstream repository on an Alpin
 
 ## Roadmap
 
-- [ ] Submit to the official MCP Registry and Smithery
+- [x] Official MCP Registry listing (`io.github.devkindhq/whatweb-mcp`)
+- [ ] Docker MCP Registry and Smithery listings
 - [ ] Batch scanning (multiple targets in one call)
 - [ ] Optional CSV/JSON export tool
 - [ ] Scheduled re-scans with diffing (alert when a target's stack changes)
