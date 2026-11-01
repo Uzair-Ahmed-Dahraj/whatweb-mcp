@@ -4,7 +4,7 @@
 # Build both platforms:
 #   docker buildx build --platform linux/amd64,linux/arm64 -t devkind/whatweb-mcp:latest .
 
-FROM ruby:3.2.8-alpine
+FROM ruby:3.4.12-alpine3.23
 
 LABEL org.opencontainers.image.title="whatweb-mcp"
 LABEL org.opencontainers.image.description="MCP server for WhatWeb: web technology fingerprinting for AI agents"
@@ -26,7 +26,7 @@ RUN apk add --no-cache \
     && rm -rf /var/cache/apk/*
 
 # Install WhatWeb
-RUN git clone --depth 1 https://github.com/urbanadventurer/WhatWeb.git /opt/whatweb && \
+RUN git clone --depth 1 --branch v0.6.4 https://github.com/urbanadventurer/WhatWeb.git /opt/whatweb && \
     cd /opt/whatweb && bundle install --without development test && \
     ln -s /opt/whatweb/whatweb /usr/local/bin/whatweb && \
     apk del build-base ruby-dev git
