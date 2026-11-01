@@ -35,6 +35,14 @@ before a PR is merged.
 2. Ensure `pytest` passes.
 3. Open the PR describing what changed and why.
 
+## Releasing
+
+Pushing a tag `vX.Y.Z` (matching `version` in `server.json` and the image tag in
+`packages[0].identifier`) runs `.github/workflows/release.yml`. It builds and
+pushes the multi-arch image to Docker Hub (`X.Y.Z` and `latest`), then
+publishes `server.json` to the Official MCP Registry. Maintainers need the
+`DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` repository secrets.
+
 ## License
 
 By contributing you agree your work is released under the MIT License.
