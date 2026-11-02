@@ -8,11 +8,11 @@
     "url": "https://github.com/devkindhq/whatweb-mcp",
     "source": "github"
   },
-  "version": "1.1.0",
+  "version": "1.0.1",
   "packages": [
     {
       "registryType": "oci",
-      "identifier": "docker.io/devkind/whatweb-mcp:1.1.0",
+      "identifier": "docker.io/devkind/whatweb-mcp:1.0.1",
       "transport": {
         "type": "stdio"
       },
@@ -35,7 +35,12 @@
   "_meta": {
     "io.modelcontextprotocol.registry/publisher-provided": {
       "author": "Devkind",
-      "website": "https://devkind.com.au"
+      "website": "https://devkind.com.au",
+      "tools": [
+        "whatweb_scan",
+        "get_scan_results",
+        "list_active_scans"
+      ]
     }
   }
 }

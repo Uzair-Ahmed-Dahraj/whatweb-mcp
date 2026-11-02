@@ -1,8 +1,6 @@
 {
-  "mcpServers": {
-    "whatweb": {
-      "command": "docker",
-      "args": ["run", "-i", "--rm", "--memory=512m", "--cpus=0.5", "--pids-limit=100", "devkind/whatweb-mcp:1.1.0"]
-    }
+  "whatweb": {
+    "command": "docker",
+    "args": ["run", "-i", "--rm", "--memory=512m", "--cpus=0.5", "--pids-limit=100", "devkind/whatweb-mcp:latest"]
   }
 }

@@ -2,11 +2,12 @@
 
 ## Supported versions
 
-Only the latest release is supported.
+The `latest` tag on Docker Hub and the tip of `main` are supported.
 
 ## Reporting a vulnerability
 
-Email security@devkind.com.au.
+Email the maintainers via the Devkind GitHub organisation
+(open a private security advisory on the repo if enabled, or contact an admin).
 
 Please do not open public issues for suspected vulnerabilities. We aim to
 respond within 5 business days.
