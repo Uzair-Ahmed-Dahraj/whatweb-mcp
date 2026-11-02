@@ -18,8 +18,9 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt pytest
 ```
 
 The test suite covers target validation, WhatWeb JSON parsing, the in-memory
-result store, and a live MCP stdio JSON-RPC handshake. All tests must pass
-before a PR is merged.
+result store, and a live MCP stdio JSON-RPC handshake. The tests do not need
+the WhatWeb binary. CI runs them on Python 3.12 and builds the Docker image
+for `linux/amd64`. Both jobs must pass before a PR is merged.
 
 ## Ground rules
 
@@ -31,17 +32,29 @@ before a PR is merged.
 
 ## Pull requests
 
-1. Fork, branch, commit with a clear message.
-2. Ensure `pytest` passes.
+1. Fork, branch, and commit with a
+   [Conventional Commits](https://www.conventionalcommits.org/) message, for
+   example `fix: reject empty targets`.
+2. Make sure `pytest` passes.
 3. Open the PR describing what changed and why.
 
 ## Releasing
 
-Pushing a tag `vX.Y.Z` (matching `version` in `server.json` and the image tag in
-`packages[0].identifier`) runs `.github/workflows/release.yml`. It builds and
-pushes the multi-arch image to Docker Hub (`X.Y.Z` and `latest`), then
-publishes `server.json` to the Official MCP Registry. Maintainers need the
-`DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` repository secrets.
+1. In one PR, set the new version `X.Y.Z` in all of these places:
+   - `server.json`: `version` and the image tag in `packages[0].identifier`
+     (`docker.io/devkind/whatweb-mcp:X.Y.Z`).
+   - `.claude-plugin/plugin.json`: `version`.
+   - `.mcp.json`: the image `devkind/whatweb-mcp:X.Y.Z`.
+2. Merge the PR to `main`.
+3. Push the tag `vX.Y.Z` from `main`.
+
+The tag runs `.github/workflows/release.yml`. The workflow stops if the tag
+does not match the `server.json` version and image tag. It then builds and
+pushes the multi-arch image to Docker Hub (`X.Y.Z` and `latest`), and
+publishes `server.json` to the Official MCP Registry with GitHub OIDC.
+
+The workflow needs the `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` repository
+secrets.
 
 ## License
 

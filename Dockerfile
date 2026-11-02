@@ -10,7 +10,7 @@ LABEL org.opencontainers.image.title="whatweb-mcp"
 LABEL org.opencontainers.image.description="MCP server for WhatWeb: web technology fingerprinting for AI agents"
 LABEL org.opencontainers.image.source="https://github.com/devkindhq/whatweb-mcp"
 LABEL io.modelcontextprotocol.server.name="io.github.devkindhq/whatweb-mcp"
-LABEL org.opencontainers.image.licenses="MIT"
+LABEL org.opencontainers.image.licenses="MIT AND GPL-2.0-or-later"
 
 RUN addgroup -g 1000 mcpuser && \
     adduser -D -u 1000 -G mcpuser mcpuser
