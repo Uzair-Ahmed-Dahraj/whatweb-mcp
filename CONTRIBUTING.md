@@ -43,13 +43,6 @@ pushes the multi-arch image to Docker Hub (`X.Y.Z` and `latest`), then
 publishes `server.json` to the Official MCP Registry. Maintainers need the
 `DOCKERHUB_USERNAME` and `DOCKERHUB_TOKEN` repository secrets.
 
-The Claude Code plugin runs a pinned image, and installs from `main` get each
-change at once. So update the plugin in a second PR, after the release run
-publishes the image (`docker manifest inspect devkind/whatweb-mcp:X.Y.Z`
-succeeds): set the image tag in `.mcp.json` to `X.Y.Z` and raise `version` in
-`.claude-plugin/plugin.json`. Without the `version` change, existing installs
-keep the old image.
-
 ## License
 
 By contributing you agree your work is released under the MIT License.

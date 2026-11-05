@@ -160,7 +160,7 @@ The container installs WhatWeb from the official upstream repository on an Alpin
 
 ## Network access and data
 
-- The plugin starts the server with `docker run`, so Docker downloads the pinned `devkind/whatweb-mcp` image from Docker Hub on first use. Docker must be installed and running.
+- The plugin starts the server with `docker run`, so Docker downloads the `devkind/whatweb-mcp:latest` image from Docker Hub on first use. Later runs use the local copy until you run `docker pull devkind/whatweb-mcp:latest`. Docker must be installed and running.
 - Each scan sends HTTP requests from your machine to the target you give, with the user agent `WhatWeb/0.6.4`. WhatWeb follows up to 10 redirects, also to other hosts. The `aggressive` level sends many more requests than `stealthy`.
 - The tool result carries the target's HTTP status, the detected technologies, their versions and the matched strings.
 - The server sends no telemetry and calls no other service. It writes logs to stderr only.
@@ -168,7 +168,7 @@ The container installs WhatWeb from the official upstream repository on an Alpin
 
 ## Claude Code plugin
 
-The repository root is a Claude Code plugin. It adds the WhatWeb MCP server, pinned to the release image, and the [`tech-detector`](skills/tech-detector/SKILL.md) skill. The skill teaches Claude when to scan a site, how to call `whatweb_scan`, and how to turn the technology list into a stack summary and analysis angles for lead qualification and competitor research.
+The repository root is a Claude Code plugin. It adds the WhatWeb MCP server and the [`tech-detector`](skills/tech-detector/SKILL.md) skill. The skill teaches Claude when to scan a site, how to call `whatweb_scan`, and how to turn the technology list into a stack summary and analysis angles for lead qualification and competitor research.
 
 Install it now (Claude Code 2.1.275 or later):
 
